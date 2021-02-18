@@ -87,7 +87,6 @@ export default {
   mounted() {
     this.$store.dispatch('corona/fetchAllData').then(
         onSuccess => {
-          console.log(onSuccess);
           if (onSuccess.data) {
             this.corona = onSuccess.data;
           }
