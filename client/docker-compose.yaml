@@ -1,0 +1,23 @@
+version: '3.7'
+services:
+
+  nginx:
+    build: ./frontend
+    container_name:  corona
+    networks:
+      - corona
+    restart: always
+    ports:
+      - "80:80"
+
+  backend:
+    build: ./backend
+    container_name:  api
+    restart: always
+    networks:
+      - corona
+    expose:
+      - "8098"
+
+networks:
+  corona:
