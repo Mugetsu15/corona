@@ -9,25 +9,11 @@ class CoronaService {
           'kreisName': payload.name,
           'kreisArt': payload.type
     };
-    return axios.post(API_URL, body).then(
-        (response) => {
-            if (response.data) {
-                sessionStorage.setItem('corona', JSON.stringify(response.data));
-            }
-            return response;
-        }
-    );
+    return axios.post(API_URL, body)
   }
 
   fetchAllData() {
-    return axios.get(API_URL + '/all').then(
-        (response) => {
-            if (response.data) {
-                sessionStorage.setItem('corona', JSON.stringify(response.data));
-            }
-            return response;
-        }
-    );
+    return axios.get(API_URL + '/all');
   }
 }
 

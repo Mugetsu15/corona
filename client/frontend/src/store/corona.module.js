@@ -1,6 +1,6 @@
 import CoronaService from "../services/corona.service";
 
-const data = JSON.parse(sessionStorage.getItem('corona'));
+const data = sessionStorage.getItem('corona');
 const initialState = data
     ? { data: { exists: true, corona: data } }
     : { data: { exists: false, corona: null } };
@@ -12,8 +12,7 @@ export const corona = {
         fetchSpecificData({ commit }, payload) {
             return CoronaService.fetchSpecificData(payload).then(response => {
                 if (response.data) {
-
-                    commit("fetchSuccess");
+                    commit("fetchSuccess", response.data);
                 }
                 return Promise.resolve(response);
             }, error => {
