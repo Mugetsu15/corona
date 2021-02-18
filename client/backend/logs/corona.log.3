@@ -1,0 +1,160 @@
+2021-02-17 22:34:30,310 INFO: Corona startup [in /home/mxu/git/github/Basti/project-corona/client/backend/app/__init__.py:45]
+2021-02-17 22:34:30,310 — app — INFO — create_app:45 — Corona startup
+2021-02-17 22:34:30,312 — werkzeug — INFO — _log:113 —  * Running on http://0.0.0.0:8098/ (Press CTRL+C to quit)
+2021-02-17 22:46:39,706 INFO: Corona startup [in /home/mxu/git/github/Basti/project-corona/client/backend/app/__init__.py:45]
+2021-02-17 22:46:39,706 — app — INFO — create_app:45 — Corona startup
+2021-02-17 22:46:39,706 — werkzeug — INFO — _log:113 —  * Running on http://0.0.0.0:8098/ (Press CTRL+C to quit)
+2021-02-17 22:47:18,930 — werkzeug — INFO — _log:113 — 127.0.0.1 - - [17/Feb/2021 22:47:18] "[37mOPTIONS /api/corona HTTP/1.1[0m" 200 -
+2021-02-17 22:47:18,971 — werkzeug — INFO — _log:113 — 127.0.0.1 - - [17/Feb/2021 22:47:18] "[35m[1mPOST /api/corona HTTP/1.1[0m" 500 -
+2021-02-17 22:47:18,983 — werkzeug — ERROR — _log:113 — Error on request:
+Traceback (most recent call last):
+  File "/home/mxu/.local/lib/python3.9/site-packages/werkzeug/serving.py", line 323, in run_wsgi
+    execute(self.server.app)
+  File "/home/mxu/.local/lib/python3.9/site-packages/werkzeug/serving.py", line 312, in execute
+    application_iter = app(environ, start_response)
+  File "/home/mxu/.local/lib/python3.9/site-packages/flask/app.py", line 2464, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/mxu/.local/lib/python3.9/site-packages/flask/app.py", line 2450, in wsgi_app
+    response = self.handle_exception(e)
+  File "/home/mxu/.local/lib/python3.9/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/mxu/.local/lib/python3.9/site-packages/flask/app.py", line 1867, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/mxu/.local/lib/python3.9/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/mxu/.local/lib/python3.9/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/mxu/.local/lib/python3.9/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/mxu/.local/lib/python3.9/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/mxu/.local/lib/python3.9/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/mxu/.local/lib/python3.9/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/mxu/.local/lib/python3.9/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/mxu/.local/lib/python3.9/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/mxu/git/github/Basti/project-corona/client/backend/app/routes/corona.py", line 28, in create_config
+    logger.warning(level=logging.WARNING,
+  File "/usr/lib/python3.9/logging/__init__.py", line 1446, in warning
+    self._log(WARNING, msg, args, **kwargs)
+TypeError: _log() got multiple values for argument 'level'
+2021-02-17 22:47:31,616 — werkzeug — INFO — _log:113 — 127.0.0.1 - - [17/Feb/2021 22:47:31] "[37mOPTIONS /api/corona HTTP/1.1[0m" 200 -
+2021-02-17 22:47:31,698 — werkzeug — INFO — _log:113 — 127.0.0.1 - - [17/Feb/2021 22:47:31] "[35m[1mPOST /api/corona HTTP/1.1[0m" 500 -
+2021-02-17 22:47:31,706 — werkzeug — ERROR — _log:113 — Error on request:
+Traceback (most recent call last):
+  File "/home/mxu/.local/lib/python3.9/site-packages/werkzeug/serving.py", line 323, in run_wsgi
+    execute(self.server.app)
+  File "/home/mxu/.local/lib/python3.9/site-packages/werkzeug/serving.py", line 312, in execute
+    application_iter = app(environ, start_response)
+  File "/home/mxu/.local/lib/python3.9/site-packages/flask/app.py", line 2464, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/mxu/.local/lib/python3.9/site-packages/flask/app.py", line 2450, in wsgi_app
+    response = self.handle_exception(e)
+  File "/home/mxu/.local/lib/python3.9/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/mxu/.local/lib/python3.9/site-packages/flask/app.py", line 1867, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/mxu/.local/lib/python3.9/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/mxu/.local/lib/python3.9/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/mxu/.local/lib/python3.9/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/mxu/.local/lib/python3.9/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/mxu/.local/lib/python3.9/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/mxu/.local/lib/python3.9/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/mxu/.local/lib/python3.9/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/mxu/.local/lib/python3.9/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/mxu/git/github/Basti/project-corona/client/backend/app/routes/corona.py", line 28, in create_config
+    logger.warning(level=logging.WARNING,
+  File "/usr/lib/python3.9/logging/__init__.py", line 1446, in warning
+    self._log(WARNING, msg, args, **kwargs)
+TypeError: _log() got multiple values for argument 'level'
+2021-02-17 22:48:13,030 — werkzeug — INFO — _log:113 — 127.0.0.1 - - [17/Feb/2021 22:48:13] "[37mOPTIONS /api/corona HTTP/1.1[0m" 200 -
+2021-02-17 22:48:13,078 — werkzeug — INFO — _log:113 — 127.0.0.1 - - [17/Feb/2021 22:48:13] "[35m[1mPOST /api/corona HTTP/1.1[0m" 500 -
+2021-02-17 22:48:13,082 — werkzeug — ERROR — _log:113 — Error on request:
+Traceback (most recent call last):
+  File "/home/mxu/.local/lib/python3.9/site-packages/werkzeug/serving.py", line 323, in run_wsgi
+    execute(self.server.app)
+  File "/home/mxu/.local/lib/python3.9/site-packages/werkzeug/serving.py", line 312, in execute
+    application_iter = app(environ, start_response)
+  File "/home/mxu/.local/lib/python3.9/site-packages/flask/app.py", line 2464, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/mxu/.local/lib/python3.9/site-packages/flask/app.py", line 2450, in wsgi_app
+    response = self.handle_exception(e)
+  File "/home/mxu/.local/lib/python3.9/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/mxu/.local/lib/python3.9/site-packages/flask/app.py", line 1867, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/mxu/.local/lib/python3.9/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/mxu/.local/lib/python3.9/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/mxu/.local/lib/python3.9/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/mxu/.local/lib/python3.9/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/mxu/.local/lib/python3.9/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/mxu/.local/lib/python3.9/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/mxu/.local/lib/python3.9/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/mxu/.local/lib/python3.9/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/mxu/git/github/Basti/project-corona/client/backend/app/routes/corona.py", line 28, in create_config
+    logger.warning(level=logging.WARNING,
+  File "/usr/lib/python3.9/logging/__init__.py", line 1446, in warning
+    self._log(WARNING, msg, args, **kwargs)
+TypeError: _log() got multiple values for argument 'level'
+2021-02-17 22:48:18,455 — werkzeug — INFO — _log:113 — 127.0.0.1 - - [17/Feb/2021 22:48:18] "[37mOPTIONS /api/corona HTTP/1.1[0m" 200 -
+2021-02-17 22:48:18,509 — werkzeug — INFO — _log:113 — 127.0.0.1 - - [17/Feb/2021 22:48:18] "[35m[1mPOST /api/corona HTTP/1.1[0m" 500 -
+2021-02-17 22:48:18,515 — werkzeug — ERROR — _log:113 — Error on request:
+Traceback (most recent call last):
+  File "/home/mxu/.local/lib/python3.9/site-packages/werkzeug/serving.py", line 323, in run_wsgi
+    execute(self.server.app)
+  File "/home/mxu/.local/lib/python3.9/site-packages/werkzeug/serving.py", line 312, in execute
+    application_iter = app(environ, start_response)
+  File "/home/mxu/.local/lib/python3.9/site-packages/flask/app.py", line 2464, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/mxu/.local/lib/python3.9/site-packages/flask/app.py", line 2450, in wsgi_app
+    response = self.handle_exception(e)
+  File "/home/mxu/.local/lib/python3.9/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/mxu/.local/lib/python3.9/site-packages/flask/app.py", line 1867, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/mxu/.local/lib/python3.9/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/mxu/.local/lib/python3.9/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/mxu/.local/lib/python3.9/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/mxu/.local/lib/python3.9/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/mxu/.local/lib/python3.9/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/mxu/.local/lib/python3.9/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/mxu/.local/lib/python3.9/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/mxu/.local/lib/python3.9/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/mxu/git/github/Basti/project-corona/client/backend/app/routes/corona.py", line 28, in create_config
+    logger.warning(level=logging.WARNING,
+  File "/usr/lib/python3.9/logging/__init__.py", line 1446, in warning
+    self._log(WARNING, msg, args, **kwargs)
+TypeError: _log() got multiple values for argument 'level'
+2021-02-17 22:48:44,609 — app — INFO — create_app:45 — Corona startup
+2021-02-17 22:48:44,627 — werkzeug — INFO — _log:113 —  * Running on http://0.0.0.0:8098/ (Press CTRL+C to quit)
+2021-02-17 22:48:44,628 — werkzeug — INFO — _log:113 —  * Restarting with stat
+2021-02-17 22:49:13,205 — werkzeug — INFO — _log:113 —  * Restarting with stat
+2021-02-17 22:49:22,671 — werkzeug — INFO — _log:113 —  * Restarting with stat
+2021-02-17 22:49:33,101 — werkzeug — INFO — _log:113 —  * Restarting with stat

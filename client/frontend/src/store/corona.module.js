@@ -11,29 +11,37 @@ export const corona = {
     actions: {
         fetchSpecificData({ commit }, payload) {
             return CoronaService.fetchSpecificData(payload).then(response => {
-                commit("fetchSuccess")
+                if (response.data) {
+
+                    commit("fetchSuccess");
+                }
                 return Promise.resolve(response);
             }, error => {
-                commit("fetchFailure")
+                commit("fetchFailure");
                 return Promise.reject(error);
             });
         },
         fetchAllData({ commit }) {
             return CoronaService.fetchAllData().then(response => {
-                commit("fetchSuccess")
+                console.error(response);
+                if (response.data) {
+                    commit("fetchSuccess", response.data);
+                }
                 return Promise.resolve(response);
             }, error => {
-                commit("fetchFailure")
+                commit("fetchFailure");
                 return Promise.reject(error);
             });
         },
     },
     mutations: {
-        fetchSuccess(state) {
+        fetchSuccess(state, data) {
             state.exists = true;
+            state.corona = data;
         },
         fetchFailure(state) {
             state.exists = false;
+            state.corona = null;
         },
     }
 };

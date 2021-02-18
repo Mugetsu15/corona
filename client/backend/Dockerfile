@@ -39,3 +39,4 @@ USER corona
 EXPOSE 8098
 
 CMD ["uwsgi", "main.ini"]
+# CMD ["python3", "main.py"]

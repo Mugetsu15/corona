@@ -48,9 +48,7 @@ def infect_corona():
 
 
 @bp.route('/api/corona/all', methods=['GET'])
-def infect_corona():
-    if not request.is_json:
-        return jsonify(message="Missing JSON in request"), 400
+def corona_is_here():
     status, response = REQUEST.get(
         LinkConfig.URL_CORONA_REST['all']
     )

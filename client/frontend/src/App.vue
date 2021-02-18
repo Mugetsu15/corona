@@ -1,18 +1,19 @@
 <template>
   <div class="container-fluid">
+<!--    {{ corona }}-->
     <table class="table table-hover table-bordered">
       <thead class="table-info">
       <tr>
-        <th @click="sort('name')">Name</th>
-        <th @click="sort('type')">Art</th>
-        <th @click="sort('iz')">Inzidenz</th>
+        <th @click="sort('KreisName')">Kreisname</th>
+        <th @click="sort('KreisArt')">Kreisart</th>
+        <th @click="sort('IZ')">Inzidenz</th>
       </tr>
       </thead>
       <tbody>
       <tr v-for="item in corona">
-        <td>{{item.name}}</td>
-        <td>{{item.type}}</td>
-        <td>{{item.iz}}</td>
+        <td>{{item.KreisName}}</td>
+        <td>{{item.KreisArt}}</td>
+        <td>{{item.IZ}}</td>
       </tr>
       </tbody>
     </table>
@@ -28,31 +29,7 @@ export default {
   name: 'App',
   data () {
     return {
-      corona: [{
-        'iz': '100',
-        'type': 'Landkreis',
-        'name': 'Landshut',
-      },
-        {
-          'iz': '50',
-          'type': 'Stadt',
-          'name': 'Landshut',
-        },
-        {
-          'iz': '50',
-          'type': 'Landkreis',
-          'name': 'München',
-        },
-        {
-          'iz': '10',
-          'type': 'Stadt',
-          'name': 'München',
-        },
-        {
-          'iz': '10',
-          'type': 'Stadt',
-          'name': 'Augsburg',
-        }],
+      corona: [],
       mode: false,
       message: '',
       currentSort:'name',
@@ -62,8 +39,8 @@ export default {
     }
   },
   computed: {
-    currentUser() {
-      return this.$store.state.corona.exists;
+    currentCorona() {
+      return this.$store.state.corona.data.corona;
     },
     sortedItems: function() {
       return this.cats.sort((a,b) => {
@@ -85,7 +62,7 @@ export default {
           onSuccess => {
             console.log(onSuccess);
             if (onSuccess.data) {
-              this.corona = onSuccess.data.corona;
+              this.corona = onSuccess.data;
             }
             this.$forceData();
           }, onError => {
@@ -112,7 +89,7 @@ export default {
         onSuccess => {
           console.log(onSuccess);
           if (onSuccess.data) {
-            this.corona = onSuccess.data.corona;
+            this.corona = onSuccess.data;
           }
           this.$forceUpdate();
         }, onError => {

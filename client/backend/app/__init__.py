@@ -4,9 +4,7 @@ import secrets
 from logging.handlers import RotatingFileHandler
 from flask import Flask
 from flask_cors import CORS
-from flask_jwt_extended import JWTManager
 
-jwt = JWTManager()
 cors = CORS()
 
 
@@ -25,7 +23,6 @@ def create_app() -> Flask:
         REMEMBER_COOKIE_SECURE=True,
         REMEMBER_COOKIE_HTTPONLY=True,
     )
-    jwt.init_app(app)
     cors.init_app(app)
 
     from app.routes import bp as routes_bp

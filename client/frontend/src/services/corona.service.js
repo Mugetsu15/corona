@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'api/corona';
+const API_URL = '/api/corona';
 
 class CoronaService {
 
@@ -11,8 +11,8 @@ class CoronaService {
     };
     return axios.post(API_URL, body).then(
         (response) => {
-            if (response.data.corona) {
-                sessionStorage.setItem(JSON.stringify('corona', response.data.corona));
+            if (response.data) {
+                sessionStorage.setItem('corona', JSON.stringify(response.data));
             }
             return response;
         }
@@ -23,7 +23,7 @@ class CoronaService {
     return axios.get(API_URL + '/all').then(
         (response) => {
             if (response.data) {
-                sessionStorage.setItem(JSON.stringify('corona', response.data.corona));
+                sessionStorage.setItem('corona', JSON.stringify(response.data));
             }
             return response;
         }
