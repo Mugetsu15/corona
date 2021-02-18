@@ -25,10 +25,6 @@ def _make_response(response, status):
     return response, status
 
 
-def _helper(body: dict, url: str, function):
-    return function(url, data=body)
-
-
 @bp.route('/api/corona', methods=['POST'])
 def infect_corona():
     if not request.is_json:
@@ -38,13 +34,15 @@ def infect_corona():
         logger.warning(level=logging.WARNING,
                        msg='[Status: 401] {Message: Backend.create_ide() - Unauthorized}')
         abort(404)
+    kreis_name = request.json.get('name')
+    kreis_type = request.json.get('type')
     body = {
-        'mode': mode,
+        'kreisName': kreis_name,
+        'kreisArt': kreis_type,
     }
-    status, response = _helper(
+    status, response = REQUEST.post(
         body,
-        LinkConfig.URL_CORONA_REST['corona'],
-        REQUEST.post
+        LinkConfig.URL_CORONA_REST['select']
     )
     return _make_response(response, status)
 
@@ -53,8 +51,7 @@ def infect_corona():
 def infect_corona():
     if not request.is_json:
         return jsonify(message="Missing JSON in request"), 400
-    status, response = _helper(
-        LinkConfig.URL_CORONA_REST['corona'],
-        REQUEST.get
+    status, response = REQUEST.get(
+        LinkConfig.URL_CORONA_REST['all']
     )
     return _make_response(response, status)
