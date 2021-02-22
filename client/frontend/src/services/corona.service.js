@@ -6,8 +6,8 @@ class CoronaService {
 
   fetchSpecificData(payload) {
     let body = {
-          'kreisName': payload.name,
-          'kreisArt': payload.type
+          'KreisName': payload.name,
+          'KreisArt': payload.type
     };
     return axios.post(API_URL, body)
   }

@@ -1,9 +1,9 @@
-import CoronaService from "../services/corona.service";
+import CoronaService from "@/services/corona.service";
 
-const data = sessionStorage.getItem('corona');
+const data = JSON.parse(sessionStorage.getItem('corona'));
 const initialState = data
-    ? { data: { exists: true, corona: data } }
-    : { data: { exists: false, corona: null } };
+    ? { corona: { exists: true, data: data } }
+    : { corona: { exists: false, data: [] } };
 
 export const corona = {
     namespaced: true,
@@ -13,18 +13,18 @@ export const corona = {
             return CoronaService.fetchSpecificData(payload).then(response => {
                 if (response.data) {
                     commit("fetchSuccess", response.data);
+                    sessionStorage.setItem('corona', JSON.stringify(response.data));
                 }
                 return Promise.resolve(response);
             }, error => {
-                commit("fetchFailure");
                 return Promise.reject(error);
             });
         },
         fetchAllData({ commit }) {
             return CoronaService.fetchAllData().then(response => {
-                console.error(response);
                 if (response.data) {
                     commit("fetchSuccess", response.data);
+                    sessionStorage.setItem('corona', JSON.stringify(response.data));
                 }
                 return Promise.resolve(response);
             }, error => {
@@ -36,11 +36,10 @@ export const corona = {
     mutations: {
         fetchSuccess(state, data) {
             state.exists = true;
-            state.corona = data;
+            state.data = data;
         },
         fetchFailure(state) {
-            state.exists = false;
-            state.corona = null;
-        },
+            state.exists = state.data.length > 0;
+        }
     }
 };

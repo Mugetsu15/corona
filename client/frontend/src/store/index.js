@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import createMultiTabState from 'vuex-multi-tab-state';
-
 import { alert } from './alert.module';
 import { corona } from './corona.module';
 
@@ -16,7 +15,7 @@ export default new Vuex.Store({
     createMultiTabState({
       key: 'tab',
       statesPaths: [
-          'corona.exists'
+        'corona.exists'
       ]
     }),
   ]
