@@ -41,9 +41,6 @@
       ],
       corona: [],
     }),
-    methods: {
-
-    },
     mounted() {
       this.$store.dispatch('corona/fetchAllData').then(
           onSuccess => {
