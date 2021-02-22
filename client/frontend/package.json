@@ -1,6 +1,6 @@
 {
-  "name": "frontend",
-  "version": "0.1.0",
+  "name": "corona",
+  "version": "1.0.0",
   "private": true,
   "description": "Corona Frontend",
   "author": "Maximilian Schmitz <mschmitz@maxuniverse.de>; Sebastian Hofmeister <s.hfm@gservon.de>",
