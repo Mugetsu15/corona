@@ -37,7 +37,7 @@
       headers: [
         { text: 'Kreisname', value: 'KreisName' },
         { text: 'Kreisart', value: 'KreisArt' },
-        { text: 'Inzidenz', value: 'IZ' },
+        { text: '7-Tage-Inzidenz (pro 100.000 Einwohner)', value: 'IZ' },
       ],
       corona: [],
     }),
