@@ -13,6 +13,8 @@
         :headers="headers"
         :items="corona"
         :search="search"
+        :loading="loading"
+        loading-text="Loading... Please wait!"
     ></v-data-table>
   </v-card>
   <v-alert v-else type="error">
@@ -34,6 +36,7 @@
     data: () => ({
       message: '',
       search: '',
+      loading: false,
       headers: [
         { text: 'Kreisname', value: 'KreisName' },
         { text: 'Kreisart', value: 'KreisArt' },
@@ -42,9 +45,9 @@
       corona: [],
     }),
     mounted() {
+      this.loading = true;
       this.$store.dispatch('corona/fetchAllData').then(
           onSuccess => {
-            console.log(onSuccess)
             if (onSuccess.data) {
               this.corona = onSuccess.data;
               if (this.corona.length === 0) {
@@ -52,23 +55,20 @@
               }
             }
             this.$forceUpdate();
+            this.loading = false;
           }, onError => {
             this.$store.dispatch('corona/fallback').then(
                 onSuccess => {
-                  console.log(onSuccess.body)
-                  console.log(onSuccess.data)
-                  console.log(onSuccess.bodyText)
-                  console.log(onSuccess)
-                  if (onSuccess.body) {
-                    this.corona = onSuccess.body;
+                  if (onSuccess.data) {
+                    this.corona = JSON.parse(onSuccess.data);
                   }
+                  this.$forceUpdate();
+                  this.loading = false;
                 }, onError => {
                   this.message = (onError.response && onError.response.data) || onError.message || onError.toString();
-                  console.log(this.message)
+                  this.loading = false;
                 }
             )
-            this.message = (onError.response && onError.response.data) || onError.message || onError.toString();
-            console.log(this.message)
           }
       );
     }

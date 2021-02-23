@@ -1,12 +1,5 @@
-# Flask + VueJS + MySQL Login and Registration
-
-![VueJS Todo](../screenshots/vue-login1.PNG)
-#
-![VueJS Todo](../screenshots/vue-login2.PNG)
-#
-![VueJS Todo](../screenshots/vue-login3.PNG)
-
+# Corona - Inzidenz Frontend
 
 ## Setup
 
-Manually clone the repo and then run `npm install`.
+Manually clone the repo and then run `docker-compose up -d --build --force-recreate`.

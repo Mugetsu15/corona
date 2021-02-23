@@ -15,26 +15,13 @@ logging.basicConfig(filename=LOG_FILENAME, level=logging.DEBUG, format=LOG_FORMA
 logger = logging.getLogger(__name__)
 
 
-def _error_response(status_code, message=None):
-    payload = {}
-    if message:
-        payload['message'] = message
-    response = jsonify(payload)
-    response.status_code = status_code
-    return response
-
-
-def _bad_request(message):
-    return _error_response(400, message)
-
-
 def _make_response(response, status):
     if 400 <= status < 500:
         logger.error("Backend: [Status: %s] %s" % (status, response))
-        return _error_response(status, response)
+        abort(status, description=response)
     if status >= 500:
         logger.error("Backend: [Status: %s] %s" % (status, response))
-        return _error_response(status, response)
+        abort(status, description=response)
     with open('fallback', 'w') as f:
         f.writelines(response)
     return response, status
@@ -71,12 +58,12 @@ def corona_is_here():
         return _make_response(response, status)
     except ConnectionError or MaxRetryError or NewConnectionError or TimeoutError as err:
         logger.exception(err)
-        return _error_response(500, err)
+        abort(500, description=err)
 
 
 @bp.route('/api/corona/fallback', methods=['GET'])
 def get_fallback():
     with open('fallback', 'r') as f:
-        response = jsonify(f.readlines())
+        response = jsonify(f.readline())
         response.status_code = 200
         return response

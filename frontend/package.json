@@ -1,9 +1,9 @@
 {
   "name": "corona",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "Corona Frontend",
-  "author": "Maximilian Schmitz <mschmitz@maxuniverse.de>; Sebastian Hofmeister <s.hfm@gservon.de>",
+  "author": "Maximilian Schmitz <mschmitz@maxuniverse.de>",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build"

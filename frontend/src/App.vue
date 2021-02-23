@@ -31,7 +31,6 @@ import CoronaTable from './components/CoronaTable';
 
 export default {
   name: 'App',
-
   components: {
     CoronaTable,
   },
