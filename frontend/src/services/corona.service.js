@@ -15,6 +15,10 @@ class CoronaService {
   fetchAllData() {
     return axios.get(API_URL + '/all');
   }
+
+  fallback() {
+    return axios.get(API_URL + '/fallback');
+  }
 }
 
 export default new CoronaService();

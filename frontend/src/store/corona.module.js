@@ -32,6 +32,13 @@ export const corona = {
                 return Promise.reject(error);
             });
         },
+        fallback({ commit }) {
+            return CoronaService.fallback().then(response => {
+                return Promise.resolve(response);
+            }, error => {
+                return Promise.reject(error);
+            });
+        },
     },
     mutations: {
         fetchSuccess(state, data) {

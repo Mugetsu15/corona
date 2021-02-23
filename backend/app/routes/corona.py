@@ -1,6 +1,6 @@
-import json
 import logging
-
+from urllib3.exceptions import MaxRetryError, NewConnectionError, TimeoutError
+from requests.exceptions import ConnectionError
 from flask import jsonify, request
 from flask_restful import abort
 from app.connection import Connection
@@ -15,13 +15,28 @@ logging.basicConfig(filename=LOG_FILENAME, level=logging.DEBUG, format=LOG_FORMA
 logger = logging.getLogger(__name__)
 
 
+def _error_response(status_code, message=None):
+    payload = {}
+    if message:
+        payload['message'] = message
+    response = jsonify(payload)
+    response.status_code = status_code
+    return response
+
+
+def _bad_request(message):
+    return _error_response(400, message)
+
+
 def _make_response(response, status):
     if 400 <= status < 500:
-        logger.log(level=logging.DEBUG, msg="Backend: [Status: %s] %s" % (status, response))
-        return jsonify(message=json.loads(response)['message'], status=status)
+        logger.error("Backend: [Status: %s] %s" % (status, response))
+        return _error_response(status, response)
     if status >= 500:
-        logger.error(level=logging.ERROR, msg="Backend: [Status: %s] %s" % (status, response))
-        abort(status, description=response)
+        logger.error("Backend: [Status: %s] %s" % (status, response))
+        return _error_response(status, response)
+    with open('fallback', 'w') as f:
+        f.writelines(response)
     return response, status
 
 
@@ -49,7 +64,19 @@ def infect_corona():
 
 @bp.route('/api/corona/all', methods=['GET'])
 def corona_is_here():
-    status, response = REQUEST.get(
-        LinkConfig.URL_CORONA_REST['all']
-    )
-    return _make_response(response, status)
+    try:
+        status, response = REQUEST.get(
+            LinkConfig.URL_CORONA_REST['all']
+        )
+        return _make_response(response, status)
+    except ConnectionError or MaxRetryError or NewConnectionError or TimeoutError as err:
+        logger.exception(err)
+        return _error_response(500, err)
+
+
+@bp.route('/api/corona/fallback', methods=['GET'])
+def get_fallback():
+    with open('fallback', 'r') as f:
+        response = jsonify(f.readlines())
+        response.status_code = 200
+        return response

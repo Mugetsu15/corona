@@ -1,6 +1,5 @@
 import logging
 import os
-import secrets
 from logging.handlers import RotatingFileHandler
 from flask import Flask
 from flask_cors import CORS
@@ -12,14 +11,12 @@ def create_app() -> Flask:
     app = Flask(__name__)
     app.config.update(
         LOG_TO_STDOUT=False,
-        TRAP_HTTP_EXCEPTIONS=True,
-        PROPAGATE_EXCEPTIONS=True,
-        SECRET_KEY=secrets.token_urlsafe(512),
-        JWT_COOKIE_CSRF_PROTECT=True,
+        TRAP_HTTP_IE_CSRF_PROTECT=True,
         JWT_ACCESS_COOKIE_PATH='/api/',
         SESSION_COOKIE_SECURE=True,
         SESSION_COOKIE_HTTPONLY=True,
         SESSION_COOKIE_SAMESITE='Lax',
+        CSRF_ENABLED=True,
         REMEMBER_COOKIE_SECURE=True,
         REMEMBER_COOKIE_HTTPONLY=True,
     )

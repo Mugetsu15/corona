@@ -37,13 +37,14 @@
       headers: [
         { text: 'Kreisname', value: 'KreisName' },
         { text: 'Kreisart', value: 'KreisArt' },
-        { text: '7-Tage-Inzidenz (pro 100.000 Einwohner)', value: 'IZ' },
+        { text: '7-Tage-Inzidenz', value: 'IZ' },
       ],
       corona: [],
     }),
     mounted() {
       this.$store.dispatch('corona/fetchAllData').then(
           onSuccess => {
+            console.log(onSuccess)
             if (onSuccess.data) {
               this.corona = onSuccess.data;
               if (this.corona.length === 0) {
@@ -52,7 +53,22 @@
             }
             this.$forceUpdate();
           }, onError => {
+            this.$store.dispatch('corona/fallback').then(
+                onSuccess => {
+                  console.log(onSuccess.body)
+                  console.log(onSuccess.data)
+                  console.log(onSuccess.bodyText)
+                  console.log(onSuccess)
+                  if (onSuccess.body) {
+                    this.corona = onSuccess.body;
+                  }
+                }, onError => {
+                  this.message = (onError.response && onError.response.data) || onError.message || onError.toString();
+                  console.log(this.message)
+                }
+            )
             this.message = (onError.response && onError.response.data) || onError.message || onError.toString();
+            console.log(this.message)
           }
       );
     }
