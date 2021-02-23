@@ -15,7 +15,8 @@
     "vue": "^2.6.11",
     "axios": "^0.21.1",
     "vuetify": "^2.4.0",
-    "vuex": "^3.4.0"
+    "vuex": "^3.4.0",
+    "vue-cookies": "^1.7.4"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.5.0",

@@ -1,6 +1,4 @@
 Flask
 Flask-Cors
-Flask-Migrate
 Flask-RESTful
-Flask-SQLAlchemy
 requests

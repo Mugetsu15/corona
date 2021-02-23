@@ -33,6 +33,11 @@
         return this.$store.state.corona.exists;
       }
     },
+    watch: {
+      search: function (newQuestion, oldQuestion) {
+        this.$cookies.set("search", this.search, '2d', null, null, true, "Lax")
+      }
+    },
     data: () => ({
       message: '',
       search: '',
@@ -54,6 +59,7 @@
                 this.corona = this.getCoronaData;
               }
             }
+            this.search = this.$cookies.get("search");
             this.$forceUpdate();
             this.loading = false;
           }, onError => {
@@ -62,6 +68,7 @@
                   if (onSuccess.data) {
                     this.corona = JSON.parse(onSuccess.data);
                   }
+                  this.search = this.$cookies.get("search");
                   this.$forceUpdate();
                   this.loading = false;
                 }, onError => {
