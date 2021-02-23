@@ -59,7 +59,9 @@
                 this.corona = this.getCoronaData;
               }
             }
-            this.search = this.$cookies.get("search");
+            if (this.$cookies.get('search') !== null) {
+              this.search = this.$cookies.get("search");
+            }
             this.$forceUpdate();
             this.loading = false;
           }, onError => {
@@ -68,7 +70,9 @@
                   if (onSuccess.data) {
                     this.corona = JSON.parse(onSuccess.data);
                   }
-                  this.search = this.$cookies.get("search");
+                  if (this.$cookies.get('search') !== null) {
+                    this.search = this.$cookies.get("search");
+                  }
                   this.$forceUpdate();
                   this.loading = false;
                 }, onError => {
