@@ -28,7 +28,7 @@
         <v-card>
           <v-card-text>
             <v-container grid-list-md>
-              <ItemLoader v-bind:selected="selected"/>
+<!--              <ItemLoader v-bind:selected="selected"/>-->
             </v-container>
           </v-card-text>
           <v-card-actions>
@@ -47,12 +47,12 @@
 </template>
 
 <script>
-import ItemLoader from './helper/ItemLoader';
+// import ItemLoader from './helper/ItemLoader';
 
 export default {
   name: "CoronaTable",
   components: {
-    ItemLoader,
+    // ItemLoader,
   },
   computed: {
     getCoronaData() {

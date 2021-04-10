@@ -46,7 +46,7 @@
       <v-tab-item>
         <v-card flat>
           <v-card-text>
-            <ItemChart v-bind:itemData="fetchItemData('chart')" />
+<!--            <ItemChart v-bind:itemData="fetchItemData('chart')" />-->
           </v-card-text>
         </v-card>
       </v-tab-item>
@@ -58,7 +58,7 @@
 <script>
 import ItemRules from '../items/Rules';
 import ItemMap from '../items/Map';
-import ItemChart from '../items/Chart';
+// import ItemChart from '../items/Chart';
 
 export default {
   name: 'ItemLoader',
@@ -66,7 +66,7 @@ export default {
   components: {
     ItemRules,
     ItemMap,
-    ItemChart,
+    // ItemChart,
   },
   data: () => ({
     message: '',
