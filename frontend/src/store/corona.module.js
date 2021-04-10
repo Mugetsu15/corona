@@ -33,11 +33,7 @@ export const corona = {
             });
         },
         fallback({ commit }) {
-            return CoronaService.fallback().then(response => {
-                return Promise.resolve(response);
-            }, error => {
-                return Promise.reject(error);
-            });
+            return JSON.parse(sessionStorage.getItem('corona'));
         },
     },
     mutations: {

@@ -35,6 +35,16 @@ function time() {
     };
 }
 
+function connect() {
+    return {
+        get: function (url) {
+            return Vue.http.get(url);
+        },
+        post: function (url, body) {
+            return Vue.http.post(url, body);
+        }
+    };
+}
 
 /**
  *
@@ -51,4 +61,4 @@ function convert() {
     };
 }
 
-export {time, convert}
+export {time, convert, connect}
