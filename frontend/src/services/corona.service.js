@@ -1,23 +1,28 @@
 import axios from 'axios';
 
-const API_URL = '/api/corona';
+const API_URL = 'https://rest-api.gservon.de/corona';
+const API_URL_ALL = '/iz/all';
+const API_URL_BY_DATE = API_URL_ALL + '/select/{DDMMYYYY}';
+const API_URL_DISTRICT = API_URL_ALL + '/district';
 
 class CoronaService {
 
-  fetchSpecificData(payload) {
+  byDate(date) {
+    return axios.post(API_URL_BY_DATE + date);
+  }
+
+  all() {
+    return axios.get(API_URL_ALL);
+  }
+
+  byDistrict(district) {
     let body = {
-          'KreisName': payload.name,
-          'KreisArt': payload.type
-    };
-    return axios.post(API_URL, body)
-  }
-
-  fetchAllData() {
-    return axios.get(API_URL + '/all');
-  }
-
-  fallback() {
-    return axios.get(API_URL + '/fallback');
+        "KreisArt": district.KreisArt,
+        "KreisName": district.KreisName
+    }
+    return axios.post(API_URL_DISTRICT, body, {
+    
+    });
   }
 }
 
