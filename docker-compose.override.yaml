@@ -1,8 +1,0 @@
-version: '3.7'
-services:
-
-  backend:
-    environment:
-      PYTHONUNBUFFERED: 1
-      DEV: 'false'
-      DB_DATABASE: fallback.sqlite3

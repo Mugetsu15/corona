@@ -12,8 +12,7 @@ export const corona = {
         byDate({ commit }, date) {
             return CoronaService.byDate(date).then(response => {
                 if (response.data) {
-                    commit("fetchSuccess", response.data);
-                    sessionStorage.setItem('date', JSON.stringify(response.data));
+                    sessionStorage.setItem('corona', JSON.stringify(response.data));
                 }
                 return Promise.resolve(response);
             }, error => {
@@ -35,8 +34,7 @@ export const corona = {
         byDistrict({ commit }, district) {
             return CoronaService.byDistrict(district).then(response => {
                 if (response.data) {
-                    commit("fetchSuccess", response.data);
-                    sessionStorage.setItem('district', JSON.stringify(response.data));
+                    sessionStorage.setItem('corona', JSON.stringify(response.data));
                 }
                 return Promise.resolve(response);
             }, error => {

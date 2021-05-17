@@ -103,7 +103,6 @@ export default {
         }, onError => {
           this.message = (onError.response && onError.response.data) || onError.message || onError.toString();
           this.loading = false;
-          )
         }
     );
   }

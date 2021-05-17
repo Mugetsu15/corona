@@ -1,4 +1,4 @@
-# Corona - Inzidenz Frontend
+# Corona - Inzidenz
 
 ## Setup
 
