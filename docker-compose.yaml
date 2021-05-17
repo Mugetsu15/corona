@@ -2,22 +2,13 @@ version: '3.7'
 services:
 
   nginx:
-    build: ./frontend
+    build: ./view
     container_name:  corona
     networks:
       - corona
     restart: always
     ports:
       - "127.0.0.1:8080:80"
-
-  backend:
-    build: ./backend
-    container_name:  api
-    restart: always
-    networks:
-      - corona
-    expose:
-      - "8098"
 
 networks:
   corona:

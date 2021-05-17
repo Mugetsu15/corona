@@ -87,7 +87,7 @@ export default {
   },
   mounted() {
     this.loading = true;
-    this.$store.dispatch('corona/fetchAllData').then(
+    this.$store.dispatch('corona/all').then(
         onSuccess => {
           if (onSuccess.data) {
             this.corona = onSuccess.data;
@@ -101,21 +101,8 @@ export default {
           this.$forceUpdate();
           this.loading = false;
         }, onError => {
-          this.$store.dispatch('corona/fallback').then(
-              onSuccess => {
-                if (onSuccess.data) {
-                  this.corona = JSON.parse(onSuccess.data);
-                }
-                if (this.$cookies.get('search')) {
-                  this.search = this.$cookies.get("search");
-                }
-                this.$forceUpdate();
-                this.loading = false;
-              }, onError => {
-                this.message = (onError.response && onError.response.data) || onError.message || onError.toString();
-                this.loading = false;
-              }
-          )
+          this.message = (onError.response && onError.response.data) || onError.message || onError.toString();
+          this.loading = false;
         }
     );
   }
