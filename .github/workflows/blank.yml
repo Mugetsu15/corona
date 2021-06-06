@@ -1,0 +1,25 @@
+name: Deploy corona incidence viewer
+on:
+   push:
+      branches:
+      - main
+   pull_request:
+      branches:
+      - main
+
+jobs:
+   build:
+      runs-on: ubuntu-latest
+      env:
+        PORT: 80
+      steps:
+      -  uses: actions/checkout@v2
+      -  name: Run docker-compose stack
+         run: docker-compose -f docker-compose.yml up --build --force-recreate -d
+      - name: Check running containers
+         run: docker ps -a
+      -  name: Check folder
+         run: pwd
+      -  name: Check files
+         run: ls -ltr
+       
