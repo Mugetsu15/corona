@@ -15,7 +15,7 @@
     "jquery": "^3.5.1",
     "vue": "^2.6.11",
     "vue-cookies": "^1.7.4",
-    "vuetify": "^2.4.0",
+    "vuetify": "^2.5.1",
     "vuex": "^3.4.0"
   },
   "devDependencies": {
