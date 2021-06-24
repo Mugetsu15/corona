@@ -13,7 +13,7 @@
     "bootstrap": "^4.6.0",
     "core-js": "^3.13.1",
     "jquery": "^3.6.0",
-    "vue": "^2.6.11",
+    "vue": "^2.6.13",
     "vue-cookies": "^1.7.4",
     "vuetify": "^2.5.3",
     "vuex": "^3.4.0"
@@ -24,7 +24,7 @@
     "sass": "^1.34.0",
     "sass-loader": "^10.2.0",
     "vue-cli-plugin-vuetify": "^2.4.1",
-    "vue-template-compiler": "^2.6.11",
+    "vue-template-compiler": "^2.6.13",
     "vuetify-loader": "^1.7.0",
     "vuex-multi-tab-state": "^1.0.16"
   },
