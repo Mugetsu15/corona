@@ -10,16 +10,16 @@ on:
 jobs:
    build:
       runs-on: ubuntu-latest
-      env:
-        PORT: 80
+
+
       steps:
       - uses: actions/checkout@v2
-      - name: Run docker-compose stack
-        run: docker-compose -f docker-compose.yml up --build -d
-      - name: Check running containers
-        run: docker ps -a
-      - name: Check folder
-        run: pwd
-      - name: Check files
-        run: ls -ltr
+      - name: Install necessary packages
+        run: npm install
+      - name: Run 'npm audit fix' 
+        run: npm audit fix
+      - name: Build Web content
+        run: npm run build
+      - name: Run build script 
+        run: chmod +x @/build.sh && bash build.sh
        
