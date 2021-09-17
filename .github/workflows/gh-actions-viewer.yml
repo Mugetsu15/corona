@@ -28,7 +28,4 @@ jobs:
       - name: Run 'npm audit fix' 
         run: npm audit fix
       - name: Build Web content
-        run: npm run build
-      - name: Run build script 
-        run: git update-index --chmod +x ./deploy.sh && bash ./deploy.sh
-       
+        run: npm run build    
