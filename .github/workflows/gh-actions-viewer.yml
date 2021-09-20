@@ -29,13 +29,8 @@ jobs:
         run: npm audit fix
       - name: Build Web content
         run: npm run build
-      - name: Pushes to another repository
-        uses: cpina/github-action-push-to-another-repository@main
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          source-directory: 'dist'
-          destination-github-username: 'Mugetsu15'
-          destination-repository-name: 'corona'
-          user-email: admin@maxuniverse.de
-          target-branch: gh-pages
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
