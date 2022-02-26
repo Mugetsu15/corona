@@ -1,0 +1,32 @@
+name: Deployed to Staging Environment
+#1. This is the name you want to give to the action. This name is displayed on your Github Repo under actions. Give it a name that make sense to you and your team.
+runs-on: ubuntu-latest
+#2. This is the OS to which the commands will be run against; best is to use similar OS type to your production server. Or use ubuntu-latest if you using any of the cloud based environments
+on:[push]
+#3. This is the trigger of the workflow. In our case the workflow is triggered when a push occurs but other options include pull_request, merge e.t.c basically any of the Github Actions (Hence the name). You can set up several in one page too but it best practice to have one per workflow file. You can use on: [push, pull_request] to have the workflow triggered by several actions.
+       
+       branches:
+          - develop
+#4. This is the branch which triggers the workflow and to which the rest of the commands happen.
+jobs:
+  firebase-deploy:
+  #5. This is the job that we would like to perform; see Github Actions documentation for many more types.
+    runs-on: ubuntu-latest
+      #5. This is the OS of the virtual machine to which your code will be deployed against. It's best to use similar OS as the production server. If you using any of the cloud environments (most likely are linux based) then use ubuntu-latest. 
+      steps:
+        - uses: actions/checkout@master
+#6. Always have this line; It contains the run instructions for the below steps
+        - uses: actions/setup-node@master
+#7. The above line will set up NodeJS (the latest version ) because we are deploying a VueJS project. 
+        - run: npm install
+#8 At this point, Github Action has spun out a Ubuntu Virtual Machine, installed all its dependencies plus Node in above line and the above line installs all the dependencies of your projects
+        - run: npm run build
+#9 Runs the build for the project; creating a /dist folder at the root with is uploaded to Firebase
+        - uses: w9jds/firebase-action@master
+#10 This line loads the firebase action repository which has instructions on how to run the steps that are below...Notice the use of the words -uses to indicate that the below lines will be based off the referenced repo
+        with:
+           args: deploy --only hosting
+#11 This is the firebase specific instruction, used to deploy the build folder (/dist) to firebase. This is similar to running , '''firebase deploy --only hosting''' on a local machine; if you had build the project locally
+        env:
+           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#12 This is the Firebase Token, generated from your local machine and inserted in your Github's Repo > Settings > Secrets and the name is FirebaseDeploy (you can use your own name). See documentation on how to install Firebase, Initialise project and Obtain firebase token. [This should take you less than 10 minutes]
