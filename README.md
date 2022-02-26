@@ -1,3 +1,5 @@
+[![Build Corona Incidence](https://github.com/Mugetsu15/corona/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/Mugetsu15/corona/actions/workflows/main.yml)
+
 # frontend
 
 ## Project setup
