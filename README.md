@@ -1,4 +1,4 @@
-[![Build Corona Incidence](https://github.com/Mugetsu15/corona/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/Mugetsu15/corona/actions/workflows/main.yml)
+[![Anchore Container Scan](https://github.com/Mugetsu15/corona/actions/workflows/anchore-analysis.yml/badge.svg?branch=main)](https://github.com/Mugetsu15/corona/actions/workflows/anchore-analysis.yml)
 
 # frontend
 
