@@ -6,7 +6,8 @@
   "author": "Maximilian Schmitz <mschmitz@maxuniverse.de>",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "deploy": "node scripts/gh-pages-deploy.js"
   },
   "dependencies": {
     "axios": "^0.21.2",
